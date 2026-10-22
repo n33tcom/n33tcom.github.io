@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="n33t directory">
+
+  <title>n33t</title>
+
+  <style>
+    :root {
+      --background: #000;
+      --foreground: #f5f5f5;
+      --muted: #777;
+      --pink: #ff69b4;
+      --icon-size: 23px;
+      --icon-gap: 30px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* Centered page layout */
+
+    .page {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px 76px;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 10px;
+      animation: fade-in 1.2s ease both;
+    }
+	
+
+    /* Animated logo GIF */
+
+    .logo {
+      display: block;
+      width: min(90vw, 500px);
+      max-height: 220px;
+      height: auto;
+      object-fit: contain;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    /* Social media icons */
+
+    .socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--icon-gap);
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      color: var(--muted);
+      text-decoration: none;
+      transform: scale(1);
+      transition:
+        color 220ms ease,
+        transform 220ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .social-link svg {
+      display: block;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      fill: currentColor;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+      color: var(--pink);
+      transform: scale(1.2);
+    }
+
+    .social-link:focus-visible {
+      outline: 1px solid currentColor;
+      outline-offset: 5px;
+      border-radius: 4px;
+    }
+
+    /* Fixed scrolling copyright footer */
+
+    .footer {
+      position: fixed;
+      z-index: 10;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #000;
+      border-top: 1px solid #161616;
+    }
+
+    .ticker {
+      display: flex;
+      width: max-content;
+      flex-shrink: 0;
+      animation: marquee 28s linear infinite;
+      will-change: transform;
+    }
+
+    .ticker-group {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+    }
+
+    .ticker span {
+      padding-right: 34px;
+      color: #777;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* Animations */
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Mobile optimization */
+
+    @media (max-width: 480px) {
+      :root {
+        --icon-size: 22px;
+        --icon-gap: 19px;
+      }
+
+      .page {
+        padding: 24px 16px 60px;
+      }
+
+      .main-content {
+        gap: 28px;
+      }
+
+      .logo {
+        width: min(88vw, 360px);
+        max-height: 180px;
+      }
+
+      .social-link {
+        width: 38px;
+        height: 42px;
+      }
+
+      .footer {
+        height: 30px;
+      }
+
+      .ticker span {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+      }
+    }
+
+    /* Accessibility: respect reduced motion */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+    <div class="main-content">
+      <img
+        class="logo"
+        src="images/logo.gif"
+        alt="Your logo"
+        width="500"
+        height="180"
+        fetchpriority="high"
+      >
+
+      <nav class="socials" aria-label="Social media">
+
+        <!-- Instagram -->
+        <a
+          class="social-link"
+          href="https://www.instagram.com/YOUR_USERNAME/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+			<path d="M10.202,2.098c-1.49,.07-2.507,.308-3.396,.657-.92,.359-1.7,.84-2.477,1.619-.776,.779-1.254,1.56-1.61,2.481-.345,.891-.578,1.909-.644,3.4-.066,1.49-.08,1.97-.073,5.771s.024,4.278,.096,5.772c.071,1.489,.308,2.506,.657,3.396,.359,.92,.84,1.7,1.619,2.477,.779,.776,1.559,1.253,2.483,1.61,.89,.344,1.909,.579,3.399,.644,1.49,.065,1.97,.08,5.771,.073,3.801-.007,4.279-.024,5.773-.095s2.505-.309,3.395-.657c.92-.36,1.701-.84,2.477-1.62s1.254-1.561,1.609-2.483c.345-.89,.579-1.909,.644-3.398,.065-1.494,.081-1.971,.073-5.773s-.024-4.278-.095-5.771-.308-2.507-.657-3.397c-.36-.92-.84-1.7-1.619-2.477s-1.561-1.254-2.483-1.609c-.891-.345-1.909-.58-3.399-.644s-1.97-.081-5.772-.074-4.278,.024-5.771,.096m.164,25.309c-1.365-.059-2.106-.286-2.6-.476-.654-.252-1.12-.557-1.612-1.044s-.795-.955-1.05-1.608c-.192-.494-.423-1.234-.487-2.599-.069-1.475-.084-1.918-.092-5.656s.006-4.18,.071-5.656c.058-1.364,.286-2.106,.476-2.6,.252-.655,.556-1.12,1.044-1.612s.955-.795,1.608-1.05c.493-.193,1.234-.422,2.598-.487,1.476-.07,1.919-.084,5.656-.092,3.737-.008,4.181,.006,5.658,.071,1.364,.059,2.106,.285,2.599,.476,.654,.252,1.12,.555,1.612,1.044s.795,.954,1.051,1.609c.193,.492,.422,1.232,.486,2.597,.07,1.476,.086,1.919,.093,5.656,.007,3.737-.006,4.181-.071,5.656-.06,1.365-.286,2.106-.476,2.601-.252,.654-.556,1.12-1.045,1.612s-.955,.795-1.608,1.05c-.493,.192-1.234,.422-2.597,.487-1.476,.069-1.919,.084-5.657,.092s-4.18-.007-5.656-.071M21.779,8.517c.002,.928,.755,1.679,1.683,1.677s1.679-.755,1.677-1.683c-.002-.928-.755-1.679-1.683-1.677,0,0,0,0,0,0-.928,.002-1.678,.755-1.677,1.683m-12.967,7.496c.008,3.97,3.232,7.182,7.202,7.174s7.183-3.232,7.176-7.202c-.008-3.97-3.233-7.183-7.203-7.175s-7.182,3.233-7.174,7.203m2.522-.005c-.005-2.577,2.08-4.671,4.658-4.676,2.577-.005,4.671,2.08,4.676,4.658,.005,2.577-2.08,4.671-4.658,4.676-2.577,.005-4.671-2.079-4.676-4.656h0"/>
+		  </svg>
+        </a>
+
+        <!-- YouTube -->
+        <a
+          class="social-link"
+          href="https://www.youtube.com/@YOUR_USERNAME"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+				<path d="M31.331,8.248c-.368-1.386-1.452-2.477-2.829-2.848-2.496-.673-12.502-.673-12.502-.673,0,0-10.007,0-12.502,.673-1.377,.37-2.461,1.462-2.829,2.848-.669,2.512-.669,7.752-.669,7.752,0,0,0,5.241,.669,7.752,.368,1.386,1.452,2.477,2.829,2.847,2.496,.673,12.502,.673,12.502,.673,0,0,10.007,0,12.502-.673,1.377-.37,2.461-1.462,2.829-2.847,.669-2.512,.669-7.752,.669-7.752,0,0,0-5.24-.669-7.752ZM12.727,20.758V11.242l8.364,4.758-8.364,4.758Z"/>
+			</svg>
+        </a>
+
+        <!-- Spotify -->
+        <a
+          class="social-link"
+          href="https://open.spotify.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Spotify"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" aria-hidden="true">
+			<path d="M25.009,1.982C12.322,1.982,2,12.304,2,24.991S12.322,48,25.009,48s23.009-10.321,23.009-23.009S37.696,1.982,25.009,1.982z M34.748,35.333c-0.289,0.434-0.765,0.668-1.25,0.668c-0.286,0-0.575-.081-0.831-.252C30.194,34.1,26,33,22.5,33.001c-3.714,.002-6.498,.914-6.526,.923c-.784,.266-1.635-.162-1.897-.948s.163-1.636,.949-1.897c.132-.044,3.279-1.075,7.474-1.077C26,30,30.868,30.944,34.332,33.253C35.022,33.713,35.208,34.644,34.748,35.333z M37.74,29.193c-.325,.522-.886,.809-1.459,.809-.31,0-.624-.083-.906-.26-4.484-2.794-9.092-3.385-13.062-3.35-4.482,.04-8.066,.895-8.127,.913-.907,.258-1.861-.272-2.12-1.183-.259-.913,.272-1.862,1.184-2.12,.277-.079,3.854-.959,8.751-1,4.465-.037,10.029,.61,15.191,3.826C37.995,27.328,38.242,28.388,37.74,29.193z M40.725,22.013C40.352,22.647,39.684,23,38.998,23c-.344,0-.692-.089-1.011-.275-5.226-3.068-11.58-3.719-15.99-3.725-5.333,0-9.44,.938-9.481,.948-1.078,.247-2.151-.419-2.401-1.495-.25-1.075,.417-2.149,1.492-2.4C11.729,16.01,16.117,15,21.934,15c4.905,.007,12.011,.753,18.01,4.275C40.965,19.835,41.284,21.061,40.725,22.013z"/>
+		</svg>
+        </a>
+
+        <!-- SoundCloud -->
+        <a
+          class="social-link"
+          href="https://soundcloud.com/YOUR_USERNAME"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="SoundCloud"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+			<path d="M31.998,18.89c-.069,2.398-2.148,4.231-4.533,4.231h-10.906c-.5-.004-.903-.411-.901-.911V10.475c-.021-.416,.22-.802,.603-.966,0,0,1-.685,3.111-.685,1.296-.005,2.57,.344,3.683,1.007,1.754,1.026,2.997,2.742,3.426,4.728,.376-.109,.766-.163,1.158-.161,1.179,0,2.308,.478,3.129,1.324s1.265,1.989,1.229,3.167Z"/>
+			<path d="M14.295,11.222c.329,3.978,.569,7.606,0,11.577,0,.195-.158,.353-.353,.353s-.353-.158-.353-.353c-.528-3.933-.295-7.634,0-11.577,0-.195,.158-.353,.353-.353s.353,.158,.353,.353Z"/>
+			<path d="M12.095,12.593c.38,3.55,.493,6.657-.007,10.22-.025,.183-.182,.32-.367,.32s-.341-.137-.367-.32c-.442-3.512-.343-6.702,0-10.22,0-.204,.166-.37,.37-.37s.37,.166,.37,.37Z"/>
+			<path d="M9.879,12.25c.36,3.639,.521,6.904,0,10.553,0,.196-.159,.355-.355,.355s-.355-.159-.355-.355c-.507-3.591-.343-6.955,0-10.553,0-.196,.159-.355,.355-.355s.355,.159,.355,.355Z"/>
+			<path d="M7.682,13.278c.433,3.166,.43,6.377-.01,9.542-.018,.186-.175,.328-.361,.328s-.343-.142-.361-.328c-.408-3.168-.408-6.374,0-9.542,0-.202,.164-.367,.367-.367s.367,.164,.367,.367h0Z"/>
+			<path d="M5.455,15.639c.562,2.491,.305,4.673-.038,7.195,0,.189-.153,.343-.343,.343s-.343-.153-.343-.343c-.281-2.481-.531-4.738,0-7.195,.018-.186,.175-.328,.361-.328s.343,.142,.361,.328Z"/>
+			<path d="M3.249,15.275c.517,2.532,.346,4.684-.014,7.226-.034,.373-.685,.377-.72,0-.325-2.508-.463-4.728-.014-7.226,.025-.187,.185-.326,.373-.326s.348,.139,.373,.326Z"/>
+			<path d="M1.025,16.492c.534,1.693,.343,3.06-.034,4.769,0,.189-.153,.343-.343,.343s-.343-.153-.343-.343c-.322-1.686-.473-3.087-.031-4.769,.019-.193,.181-.341,.375-.341s.357,.148,.375,.341Z"/>
+		</svg>
+        </a>
+
+      </nav>
+    </div>
+  </main>
+
+  <footer class="footer" aria-label="Copyright notice">
+    <div class="ticker" aria-hidden="true">
+
+      <div class="ticker-group">
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+      </div>
+
+      <div class="ticker-group">
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+        <span>© 2026 n33t — ALL RIGHTS RESERVED</span>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
